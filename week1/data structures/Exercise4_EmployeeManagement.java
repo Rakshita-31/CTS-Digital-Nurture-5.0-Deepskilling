@@ -32,7 +32,7 @@ class StaffMember {
 
 public class Exercise4_EmployeeManagement {
 
-    private StaffMember[] employees;
+    private final StaffMember[] employees;
     private int count; // tracks how many slots are actually filled
 
     public Exercise4_EmployeeManagement(int capacity) {

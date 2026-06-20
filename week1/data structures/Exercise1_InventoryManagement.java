@@ -75,67 +75,16 @@ public class Exercise1_InventoryManagement {
 
     public static void main(String[] args) {
         Exercise1_InventoryManagement system = new Exercise1_InventoryManagement();
-        java.util.Scanner scanner = new java.util.Scanner(System.in);
 
-        while (true) {
-            System.out.println("\n--- Inventory Menu ---");
-            System.out.println("1. Add Product");
-            System.out.println("2. Update Product");
-            System.out.println("3. Delete Product");
-            System.out.println("4. View Product");
-            System.out.println("5. Exit");
-            System.out.print("Choose an option: ");
+        system.addProduct(new InventoryProduct(101, "Wireless Mouse", 50, 499.0));
+        system.addProduct(new InventoryProduct(102, "Mechanical Keyboard", 30, 2499.0));
 
-            int choice = Integer.parseInt(scanner.nextLine().trim());
+        System.out.println("Before update: " + system.getProduct(101));
+        system.updateProduct(101, 45, 459.0);
+        System.out.println("After update:  " + system.getProduct(101));
 
-            switch (choice) {
-                case 1:
-                    System.out.print("Enter product ID: ");
-                    int addId = Integer.parseInt(scanner.nextLine().trim());
-                    System.out.print("Enter product name: ");
-                    String name = scanner.nextLine().trim();
-                    System.out.print("Enter quantity: ");
-                    int qty = Integer.parseInt(scanner.nextLine().trim());
-                    System.out.print("Enter price: ");
-                    double price = Double.parseDouble(scanner.nextLine().trim());
-                    system.addProduct(new InventoryProduct(addId, name, qty, price));
-                    System.out.println("Added: " + system.getProduct(addId));
-                    break;
-
-                case 2:
-                    System.out.print("Enter product ID to update: ");
-                    int updateId = Integer.parseInt(scanner.nextLine().trim());
-                    System.out.print("Enter new quantity: ");
-                    int newQty = Integer.parseInt(scanner.nextLine().trim());
-                    System.out.print("Enter new price: ");
-                    double newPrice = Double.parseDouble(scanner.nextLine().trim());
-                    system.updateProduct(updateId, newQty, newPrice);
-                    System.out.println("Updated: " + system.getProduct(updateId));
-                    break;
-
-                case 3:
-                    System.out.print("Enter product ID to delete: ");
-                    int deleteId = Integer.parseInt(scanner.nextLine().trim());
-                    system.deleteProduct(deleteId);
-                    System.out.println("After delete, lookup " + deleteId + ": " + system.getProduct(deleteId));
-                    break;
-
-                case 4:
-                    System.out.print("Enter product ID to view: ");
-                    int viewId = Integer.parseInt(scanner.nextLine().trim());
-                    InventoryProduct found = system.getProduct(viewId);
-                    System.out.println(found == null ? "Product not found." : found);
-                    break;
-
-                case 5:
-                    System.out.println("Exiting. Goodbye!");
-                    scanner.close();
-                    return;
-
-                default:
-                    System.out.println("Invalid option, try again.");
-            }
-        }
+        system.deleteProduct(102);
+        System.out.println("After delete, lookup 102: " + system.getProduct(102));
     }
 }
 
