@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.cts</groupId>
+    <artifactId>slf4j-logging</artifactId>
+    <version>1.0</version>
+    <packaging>jar</packaging>
+
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <!-- SLF4J API - the logging facade our code talks to directly.
+             Note: the original exercise sheet lists slf4j-api 1.7.30 and
+             logback-classic 1.2.3. This project uses newer stable releases
+             (2.0.17 and 1.5.18) instead, since those older versions are
+             several years old at this point - same reasoning as using
+             JUnit 5 instead of JUnit 4 in the TDD module. -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>2.0.17</version>
+        </dependency>
+
+        <!-- Logback Classic - the actual logging implementation that does
+             the work behind the SLF4J facade (writing to console/file,
+             applying the pattern format, honoring log levels, etc.) -->
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.5.18</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- exec-maven-plugin lets us run the class directly with
+                 mvn exec:java, without needing to manually build a jar
+                 and manage the classpath by hand -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.2.0</version>
+                <configuration>
+                    <mainClass>com.cts.banking.LoggingExample</mainClass>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
