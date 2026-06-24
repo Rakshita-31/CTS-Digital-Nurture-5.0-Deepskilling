@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.cts</groupId>
-    <artifactId>junit-basic-testing</artifactId>
+    <artifactId>tdd-junit5-mockito</artifactId>
     <version>1.0</version>
     <packaging>jar</packaging>
 
@@ -16,12 +16,28 @@
     </properties>
 
     <dependencies>
-        <!-- JUnit 5 (JUnit Jupiter) - the modern JUnit API, replacing JUnit 4's
-             org.junit.Test with org.junit.jupiter.api.Test and friends -->
+        <!-- JUnit 5 (JUnit Jupiter) - used across all JUnit_Basic Testing exercises -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
             <version>5.10.2</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Mockito's core mocking library - used across the Mockito exercises -->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>5.11.0</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Mockito's JUnit 5 integration (enables @ExtendWith(MockitoExtension.class)
+             and @Mock annotations, useful for later Mockito exercises) -->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
+            <version>5.11.0</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
